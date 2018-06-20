@@ -5,5 +5,9 @@
  * @returns {number}
  */
 function pow (m, n) {
-
+    if (n > 1){
+      return m * pow(m,--n);
+    }else{
+      return m;
+    }
 }
