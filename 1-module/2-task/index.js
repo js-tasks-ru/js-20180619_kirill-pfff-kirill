@@ -11,7 +11,16 @@ function print (text) {
  * Эту функцию нужно поменять так,
  * чтобы функция sayHello работала корректно
  */
-function isValid (name) {
+function isValid (name){
+    if (typeof name !== 'string'){
+        return false;
+    }
+
+    if (name.length >= 4 && name.includes(' ') === false){
+        return true;
+    }
+
+    return false;
 }
 
 function sayHello () {
@@ -25,4 +34,3 @@ function sayHello () {
 }
 
 sayHello();
-
