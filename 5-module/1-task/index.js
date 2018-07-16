@@ -9,11 +9,11 @@ function highlight(table) {
 
     for (let i of status){
         if (i.dataset.available === 'true'){
-            i.classList.add('available');
+            i.parentElement.classList.add('available');
         }else if (i.dataset.available === 'false') {
-            i.classList.add('unavailable');
+            i.parentElement.classList.add('unavailable');
         }else{
-            i.hidden = true;
+            i.parentElement.hidden = true;
         }
     }
 
@@ -21,9 +21,9 @@ function highlight(table) {
 
     for (let i of gender){
         if (i.innerHTML === 'm'){
-            i.classList.add('male');
+            i.parentElement.classList.add('male');
         }else{
-            i.classList.add('female');
+            i.parentElement.classList.add('female');
         }
     }
 
@@ -31,7 +31,7 @@ function highlight(table) {
 
     for (let i of age){
         if (parseInt(i.innerHTML) < 18){
-            i.style.textDecoration = 'line-through';
+            i.parentElement.style.textDecoration = 'line-through';
         }
     }
 
