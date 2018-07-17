@@ -10,21 +10,37 @@
 
      let diff = new Date(when.getTime() - current);
 
-     if (+diff < 0){
+     console.log(new Date(diff).getUTCFullYear());
+     console.log(new Date(diff).getUTCMonth());
+     console.log(new Date(diff).getUTCDate());
+
+     if (+diff <= 0){
        return 'событие завершилось';
      }else{
-       let result = '';
+       let result = [];
 
        if (diff.getUTCFullYear() > 1970){
-         result += `${diff.getUTCFullYear() - 1970} г., `
+         result.push(`${diff.getUTCFullYear() - 1970} г.`);
        }
        if (diff.getUTCMonth() > 0){
-         result += `${diff.getUTCMonth()} м., `
+         result.push(`${diff.getUTCMonth()} мес.`);
        }
-       if (diff.getUTCDate() > 1){
-         result += `${diff.getUTCDate()} д., `
+       if (diff.getUTCDate()-1 > 0){
+         result.push(`${diff.getUTCDate()-1} д.`);
+       }
+       if (diff.getUTCFullYear() > 1970){
+         result.push(`${diff.getUTCDate()} д.`);
+       }
+       if (diff.getUTCHours() > 0){
+         result.push(`${diff.getUTCHours()} ч.`);
+       }
+       if (diff.getUTCMinutes() > 0){
+         result.push(`${diff.getUTCMinutes()} мин.`);
+       }
+       if (diff.getUTCSeconds() > 0){
+         result.push(`${diff.getUTCSeconds()} сек.`);
        }
 
-       return result;
+       return result.join(', ');
      }
  }
