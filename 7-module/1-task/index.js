@@ -8,5 +8,10 @@
  * @return {Function}
  */
 function makeLogging(fn, log) {
+    function wrapper(a, b) {
+    log.push([a,b])
+    return fn.call(this, a, b)
+  }
 
+  return wrapper;
 }
