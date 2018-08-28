@@ -37,12 +37,36 @@
          * @param {Element} root - элемент, внутри которого, нужно включить работу подсказок
          */
         attach(root) {
+            function show(e){
+                if (e.target.dataset.tooltip){
+                    let { bottom, top } = e.target.getBoundingClientRect();
+
+                    if (!(+innerHeight - +bottom > 20)){
+                        this.el.style.top = top - 40 + 'px';
+                    }else{
+                        this.el.style.top = top + 20 + 'px';
+                    }
+
+                    this.el.innerHTML = e.target.dataset.tooltip;
+                    this.el.classList.toggle('tooltip_active');
+                }
+            }
+
+            function hide(e){
+                if (e.target.dataset.tooltip){
+                    this.el.classList.toggle('tooltip_active');
+                }
+            }
+
+            root.addEventListener('mouseover', show.bind(this));
+            root.addEventListener('mouseout', hide.bind(this));
         }
 
         /**
          * Удаляет все обработчики событий
          */
         detach() {
+            this.el.classList.toggle('tooltip_active');
         }
     }
 
