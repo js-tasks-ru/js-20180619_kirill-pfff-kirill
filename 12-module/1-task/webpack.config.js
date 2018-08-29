@@ -1,6 +1,22 @@
 module.exports = {
-    /**
-     * Здесь должен быть описан ваш конфиг для сборки.
-     * Для ссылки на текущую папку используйте встроенную переменную __dirname
-     */
+  entry: './modules/app.js',
+
+  output: {
+    filename: 'index.js'
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+    ]
+  }
 };
